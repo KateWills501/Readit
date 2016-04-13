@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.title {
+    font-size: 4rem;
+    color: red;
+}
+
+.title:visited {
+    font-size: 4rem;
+    color: darkred;
+}
