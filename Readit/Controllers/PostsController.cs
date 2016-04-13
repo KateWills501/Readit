@@ -17,7 +17,8 @@ namespace Readit.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            var posts= db.Posts.OrderBy(x => x.UpCount - x.DownCount).ToList();
+            return View(posts);
         }
 
         // GET: Posts/Details/5

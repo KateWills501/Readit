@@ -17,7 +17,7 @@ namespace Readit.Models
         [MaxLength(10000)]
         public string Body { get; set; }
 
-        //[RegularExpression()]
+        //[RegularExpression()] // to validate website
         public string ExternalLink { get; set; }
 
         [Required]
@@ -25,5 +25,9 @@ namespace Readit.Models
 
         [Required]
         public string Author { get; set; }
+
+        public int UpCount { get; set; } = 0;
+
+        public int DownCount { get; set; } = 0;
     }
 }
