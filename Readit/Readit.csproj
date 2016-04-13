@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReaditDbContext.cs" />
   </ItemGroup>
