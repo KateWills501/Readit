@@ -144,7 +144,12 @@
     <Compile Include="Migrations\201604131954447_addUpAndDownVotes.Designer.cs">
       <DependentUpon>201604131954447_addUpAndDownVotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604142112475_addComments.cs" />
+    <Compile Include="Migrations\201604142112475_addComments.Designer.cs">
+      <DependentUpon>201604142112475_addComments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604131954447_addUpAndDownVotes.resx">
       <DependentUpon>201604131954447_addUpAndDownVotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604142112475_addComments.resx">
+      <DependentUpon>201604142112475_addComments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

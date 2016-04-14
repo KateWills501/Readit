@@ -29,5 +29,7 @@ namespace Readit.Models
         public int UpCount { get; set; } = 0;
 
         public int DownCount { get; set; } = 0;
+
+        public virtual List<Comment> Comments { get; set; }
     }
 }
