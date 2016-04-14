@@ -18,9 +18,9 @@
         <div class="col-md-1 row">
             <div class="rank col-md-3">@rank</div>
 
-            <div class="col-md-2 up glyphicon glyphicon-arrow-up" data-id="@x.PostId"></div>
+            <div class="col-md-2 up glyphicon glyphicon-chevron-up" data-id="@x.PostId"></div>
             <span class="col-md-6 score">@x.Score</span>
-            <div class="col-md-2 col-md-offset-4 down glyphicon glyphicon-arrow-down" data-id="@x.PostId"></div>
+            <div class="col-md-2 col-md-offset-4 down glyphicon glyphicon-chevron-down" data-id="@x.PostId"></div>
 
         </div>
         @if (x.ExternalLink != null)
@@ -34,8 +34,9 @@
             }
             <a href=@postDetails class="title">@x.Title</a>
             <div class="create">Created: @x.TimeSinceCreation hours ago by @x.Author</div>
+            <div class="col-md-1">@Html.ActionLink("Details", "Details", new { id = x.PostId }) </div>
         </div>
-        <div class="col-md-1">@Html.ActionLink("Details", "Details", new { id = x.PostId }, new { @class = "btn btn-primary" }) </div>
+
     </div>
 
                     rank++;

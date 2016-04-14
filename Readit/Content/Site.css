@@ -40,4 +40,9 @@ textarea {
     background-color: lightcoral;
 }
 
-
+#header {
+    margin-top: 0;
+    background-color: blue;
+    height: 100px;
+    width: 100%;
+}
