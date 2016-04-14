@@ -8,12 +8,12 @@
 <h2>Welcome to Readit!</h2>
 
 <p>
-    @Html.ActionLink("Create New Post", "Create", null, new {@class = "btn btn-primary btn-lg"})
+    @Html.ActionLink("Create New Post", "Create", null, new { @class = "btn btn-primary btn-lg" })
 </p>
-<br/>
+<br />
 @foreach (var x in Model)
 {
-    <div class="readitPost row">
+    <div class="readitPost row" data-id="@x.PostId">
         <div class="col-md-1">
             <div class="up glyphicon glyphicon-arrow-up btn btn-sm"></div>
             <span class="score">@x.Score</span>
@@ -21,7 +21,7 @@
         </div>
         @if (x.ExternalLink != null)
         {
-            <img class="img-responsive img-thumbnail col-md-1" src=@x.ExternalLink/>
+            <img class="img-responsive img-thumbnail col-md-1" src=@x.ExternalLink />
         }
 
         <div class="col-md-9">
@@ -31,20 +31,28 @@
             <a href=@postDetails class="title">@x.Title</a>
             <div class="create">Created: @x.TimeSinceCreation hours ago by @x.Author</div>
         </div>
-        <div class="col-md-1">@Html.ActionLink("Details", "Details", new {id = x.PostId}, new {@class = "btn btn-primary"}) </div>
+        <div class="col-md-1">@Html.ActionLink("Details", "Details", new { id = x.PostId }, new { @class = "btn btn-primary" }) </div>
     </div>
-}
+                }
 
 @section scripts
 {
     <script>
-        $.function({
-            
+        $(function() {
+            $('.up, .down').click(function() {
+                var thisdiv = $(this);
+                var postId = thisdiv.parent.parent.data("id");
+                var isUp = hasClass('up');
+                $.ajax(
+                {
+                    method: "POST",
+                    url: "Posts/Vote/" + postId + "&up=" + isUp
+                }).done(data);
+                $(function() {
+                    $('.score').text(data);
+                });
+            });
+        })
 
-
-
-
-
-        });
     </script>
 }
