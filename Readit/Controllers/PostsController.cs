@@ -17,7 +17,7 @@ namespace Readit.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            var posts= db.Posts.OrderBy(x => x.UpCount - x.DownCount).ToList();
+            var posts= db.Posts.OrderByDescending(x => x.UpCount - x.DownCount).ToList();
             var postsVMs = posts.Select(p => new PostVM()
             {
                 Author = p.Author, ExternalLink = p.ExternalLink,
