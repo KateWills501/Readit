@@ -42,6 +42,9 @@ namespace Readit.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.TimeSinceCreation = Math.Round(DateTime.Now.Subtract(post.CreateDate).TotalHours);
+
             return View(post);
         }
 

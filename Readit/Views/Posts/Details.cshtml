@@ -1,58 +1,29 @@
 ﻿@model Readit.Models.Post
 
 @{
-    ViewBag.Title = "Post";
+    ViewBag.Title = Model.Title;
 }
 
-<h2>Details</h2>
+<h2>@Model.Title</h2>
 
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+<div class="row">
+    <div class="create col-md-offset-1">Created: @ViewBag.TimeSinceCreation hours ago by @Model.Author</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-
-        <dd>
+    <div class="col-md-offset-1">
+        @if (Model.Body != null)
+        {
             @Html.DisplayFor(model => model.Body)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ExternalLink)
-        </dt>
-
-        <dd>
+        }
+        else
+        {
             @Html.DisplayFor(model => model.ExternalLink)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-
-    </dl>
+        }
+    </div>
 </div>
+
+@*Comments*@
+
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back Home", "Index")
 </p>
