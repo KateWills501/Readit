@@ -69,6 +69,27 @@ namespace Readit.Controllers
             return View(post);
         }
 
+        [HttpPost]
+        public ActionResult Vote(int id, bool up)
+        {
+            var post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return Content("nope");
+            }
+            if (up)
+            {
+                post.UpCount++;
+            }
+            else
+            {
+                post.DownCount++;
+            }
+
+            db.SaveChanges();
+            return Content((post.UpCount - post.DownCount).ToString());
+        }
+
         //// GET: Posts/Edit/5
         //public ActionResult Edit(int? id)
         //{
@@ -84,47 +105,47 @@ namespace Readit.Controllers
         //    return View(post);
         //}
 
-        //// POST: Posts/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Title,Body,ExternalLink,CreateDate,Author")] Post post)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(post).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(post);
-        //}
+            //// POST: Posts/Edit/5
+            //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+            //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+            //[HttpPost]
+            //[ValidateAntiForgeryToken]
+            //public ActionResult Edit([Bind(Include = "Id,Title,Body,ExternalLink,CreateDate,Author")] Post post)
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        db.Entry(post).State = EntityState.Modified;
+            //        db.SaveChanges();
+            //        return RedirectToAction("Index");
+            //    }
+            //    return View(post);
+            //}
 
-        //// GET: Posts/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Post post = db.Posts.Find(id);
-        //    if (post == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(post);
-        //}
+            //// GET: Posts/Delete/5
+            //public ActionResult Delete(int? id)
+            //{
+            //    if (id == null)
+            //    {
+            //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //    }
+            //    Post post = db.Posts.Find(id);
+            //    if (post == null)
+            //    {
+            //        return HttpNotFound();
+            //    }
+            //    return View(post);
+            //}
 
-        //// POST: Posts/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Post post = db.Posts.Find(id);
-        //    db.Posts.Remove(post);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+            //// POST: Posts/Delete/5
+            //[HttpPost, ActionName("Delete")]
+            //[ValidateAntiForgeryToken]
+            //public ActionResult DeleteConfirmed(int id)
+            //{
+            //    Post post = db.Posts.Find(id);
+            //    db.Posts.Remove(post);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
         protected override void Dispose(bool disposing)
         {

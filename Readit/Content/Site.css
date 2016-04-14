@@ -31,3 +31,13 @@ textarea {
     font-size: 4rem;
     color: darkred;
 }
+
+.up {
+    background-color: greenyellow;
+}
+
+.down {
+    background-color: lightcoral;
+}
+
+
