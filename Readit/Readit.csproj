@@ -148,6 +148,10 @@
     <Compile Include="Migrations\201604142112475_addComments.Designer.cs">
       <DependentUpon>201604142112475_addComments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604142125504_CommentDate.cs" />
+    <Compile Include="Migrations\201604142125504_CommentDate.Designer.cs">
+      <DependentUpon>201604142125504_CommentDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Post.cs" />
@@ -213,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604142112475_addComments.resx">
       <DependentUpon>201604142112475_addComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604142125504_CommentDate.resx">
+      <DependentUpon>201604142125504_CommentDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,6 +16,8 @@ namespace Readit.Models
         public string Body { get; set; }
         [Required]
         public Post Post { get; set; }
+
+        public DateTime CreateDate { get; set; }
         public int UpCount { get; set; }
         public int DownCount { get; set; }
     }
