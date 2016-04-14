@@ -18,20 +18,14 @@ namespace Readit.Controllers
         public ActionResult Index()
         {
             var posts= db.Posts.OrderBy(x => x.UpCount - x.DownCount).ToList();
-            var postsVMs = new List<PostVM>();
-            foreach (var p in posts)
+            var postsVMs = posts.Select(p => new PostVM()
             {
-                postsVMs.Add(new PostVM()
-                {
-                    Author = p.Author, 
-                    Body = p.Body,
-                    ExternalLink = p.ExternalLink,
-                    TimeSinceCreation = Math.Round(DateTime.Now.Subtract(p.CreateDate).TotalHours),
-                    Score = p.UpCount-p.DownCount,
-                    Title = p.Title,
-                    PostId = p.Id
-                });
-            }
+                Author = p.Author, ExternalLink = p.ExternalLink,
+                TimeSinceCreation = Math.Round(DateTime.Now.Subtract(p.CreateDate).TotalHours),
+                Score = p.UpCount - p.DownCount,
+                Title = p.Title,
+                PostId = p.Id
+            }).ToList();
             return View(postsVMs);
         }
 
