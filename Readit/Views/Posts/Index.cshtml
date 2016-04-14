@@ -13,11 +13,11 @@
 <br />
 @foreach (var x in Model)
 {
-    <div class="readitPost row" data-id="@x.PostId">
+    <div class="readitPost row">
         <div class="col-md-1">
-            <div class="up glyphicon glyphicon-arrow-up btn btn-sm"></div>
+            <div class="up glyphicon glyphicon-arrow-up btn btn-sm" data-id="@x.PostId"></div>
             <span class="score">@x.Score</span>
-            <div class="down glyphicon glyphicon-arrow-down btn btn-sm"></div>
+            <div class="down glyphicon glyphicon-arrow-down btn btn-sm" data-id="@x.PostId"></div>
         </div>
         @if (x.ExternalLink != null)
         {
@@ -41,12 +41,12 @@
         $(function() {
             $('.up, .down').click(function() {
                 var thisdiv = $(this);
-                var postId = thisdiv.parent.parent.data("id");
-                var isUp = hasClass('up');
+                var postId = $(thisdiv).data("id");
+                var isUp = $(thisdiv).hasClass('up');
                 $.ajax(
                 {
                     method: "POST",
-                    url: "Posts/Vote/" + postId + "&up=" + isUp
+                    url: "/Posts/Vote?postid=" + postId + "&up=" + isUp
                 }).done(data);
                 $(function() {
                     $('.score').text(data);

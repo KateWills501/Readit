@@ -70,9 +70,9 @@ namespace Readit.Controllers
         }
 
         [HttpPost]
-        public ActionResult Vote(int id, bool up)
+        public ActionResult Vote(int postid, bool up)
         {
-            var post = db.Posts.Find(id);
+            var post = db.Posts.Find(postid);
             if (post == null)
             {
                 return Content("nope");
