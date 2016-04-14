@@ -30,7 +30,7 @@
             }
             <a href=@postDetails class="title">@x.Title</a>
             <div class="create">Created: @x.TimeSinceCreation hours ago by @x.Author</div>
-            <div class="col-md-1">@Html.ActionLink("Details", "Details", new { id = x.PostId }) </div>
+            <div>@Html.ActionLink($"{x.NumOfComments} Comments", "Details", new { id = x.PostId }) </div>
         </div>
 
     </div>

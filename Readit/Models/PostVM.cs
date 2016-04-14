@@ -18,5 +18,7 @@ namespace Readit.Models
         public string Author { get; set; }
 
         public int Score { get; set; }
+
+        public int NumOfComments { get; set; }
     }
 }

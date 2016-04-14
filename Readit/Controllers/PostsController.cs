@@ -24,7 +24,8 @@ namespace Readit.Controllers
                 TimeSinceCreation = Math.Round(DateTime.Now.Subtract(p.CreateDate).TotalHours),
                 Score = p.UpCount - p.DownCount,
                 Title = p.Title,
-                PostId = p.Id
+                PostId = p.Id,
+                NumOfComments = p.Comments.Count()
             }).ToList();
             return View(postsVMs);
         }
