@@ -23,14 +23,12 @@ textarea {
 }
 
 .title {
-    font-size: 4rem;
-    color: red;
+    font-size: 3rem;
 }
 
-.title:visited {
-    font-size: 4rem;
+/*.title:visited {
     color: darkred;
-}
+}*/
 
 .up {
     background-color: greenyellow;
@@ -42,7 +40,12 @@ textarea {
 
 #header {
     margin-top: 0;
-    background-color: blue;
+    padding-top: 20px;
+    padding-left: 30px;
+    background-color: lightskyblue;
     height: 100px;
     width: 100%;
+    color: white;
+    text-shadow: 1px 1px darkgray;
+    font-size: 4rem;
 }

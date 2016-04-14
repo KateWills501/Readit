@@ -5,11 +5,7 @@
     ViewBag.Title = "Readit";
 }
 
-<h2>Welcome to Readit!</h2>
 
-<p>
-    @Html.ActionLink("Create New Post", "Create", null, new { @class = "btn btn-primary btn-lg" })
-</p>
 <br />
 @{ var rank = 1;}
 @foreach (var x in Model)
@@ -39,9 +35,9 @@
 
     </div>
 
-                    rank++;
+    rank++;
 
-                }
+}
 
 @section scripts
 {
