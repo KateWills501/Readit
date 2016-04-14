@@ -11,17 +11,21 @@
     @Html.ActionLink("Create New Post", "Create", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 <br />
+@{ var rank = 1;}
 @foreach (var x in Model)
 {
     <div class="readitPost row">
-        <div class="col-md-1">
-            <div class="up glyphicon glyphicon-arrow-up btn btn-sm" data-id="@x.PostId"></div>
-            <span class="score">@x.Score</span>
-            <div class="down glyphicon glyphicon-arrow-down btn btn-sm" data-id="@x.PostId"></div>
+        <div class="col-md-1 row">
+            <div class="rank col-md-3">@rank</div>
+
+            <div class="col-md-2 up glyphicon glyphicon-arrow-up" data-id="@x.PostId"></div>
+            <span class="col-md-6 score">@x.Score</span>
+            <div class="col-md-2 col-md-offset-4 down glyphicon glyphicon-arrow-down" data-id="@x.PostId"></div>
+
         </div>
         @if (x.ExternalLink != null)
         {
-            <img class="img-responsive img-thumbnail col-md-1" src=@x.ExternalLink />
+            <img class="img-responsive img-thumbnail col-xs-1" src=@x.ExternalLink />
         }
 
         <div class="col-md-9">
@@ -33,6 +37,9 @@
         </div>
         <div class="col-md-1">@Html.ActionLink("Details", "Details", new { id = x.PostId }, new { @class = "btn btn-primary" }) </div>
     </div>
+
+                    rank++;
+
                 }
 
 @section scripts
@@ -47,7 +54,7 @@
                 {
                     method: "POST",
                     url: "/Posts/Vote?postid=" + postId + "&up=" + isUp
-                   
+
                 }).done(function(data) { $(thisdiv).siblings(".score").text(data) });
         });
         })
