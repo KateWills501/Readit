@@ -47,11 +47,9 @@
                 {
                     method: "POST",
                     url: "/Posts/Vote?postid=" + postId + "&up=" + isUp
-                }).done(data);
-                $(function() {
-                    $('.score').text(data);
-                });
-            });
+                   
+                }).done(function(data) { $(thisdiv).siblings(".score").text(data) });
+        });
         })
 
     </script>
