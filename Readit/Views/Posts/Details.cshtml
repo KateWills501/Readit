@@ -1,6 +1,6 @@
 ﻿@using System.Text.RegularExpressions
 @using System.Web.UI.WebControls
-@model Readit.Models.Post
+@model Readit.Models.PostDetailVM
 
 @{
     ViewBag.Title = Model.Title;
@@ -31,16 +31,10 @@
         }
     </div>
 </div>
-
-@*Comments*@
-
-@Html.RenderPartial("~/Views/Comments/Index.cshtml", Model.Id);
-
-@{ Html.RenderPartial(
-       "~/Views/Comments/Index.cshtml",
-       new {postID = Model.Id}) };
+@{
+    ViewBag.PostId = Model.PostId;
+    Html.RenderAction("CommentList", new { postId = Model.PostId});
 }
-@Html.RenderAction("")
 
 <p>
     @Html.ActionLink("Back Home", "Index", null, new { @class = "btn btn-primary btn-sm" })

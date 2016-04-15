@@ -33,6 +33,37 @@ namespace Readit.Controllers
             return View(postsVMs);
         }
 
+
+        public ActionResult CommentList(int postId)
+        {
+            Post post = db.Posts.Find(postId);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+
+            var comments = post.Comments.OrderByDescending(x => x.UpCount - x.DownCount).ToList();
+
+            var commentVMs = comments.Select(p => new CommentVM()
+            {
+                Author = p.Author,
+                TimeSinceCreation = Math.Round(DateTime.Now.Subtract(p.CreateDate).TotalHours),
+                Score = p.UpCount - p.DownCount,
+                CommentId = p.Id,
+                Body = p.Body
+            }).ToList();
+
+            return PartialView(commentVMs);
+        }
+
+        public ActionResult AddComment()
+        {
+
+            //TODO: Add comment to DB
+            return RedirectToAction("Index"); //TODO: Direct to Details/ID
+        }
+
+
         // GET: Posts/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,7 +79,17 @@ namespace Readit.Controllers
 
             ViewBag.TimeSinceCreation = Math.Round(DateTime.Now.Subtract(post.CreateDate).TotalHours);
 
-            return View(post);
+            var model = new PostDetailVM()
+            {
+                Author = post.Author,
+                ExternalLink = post.ExternalLink,
+                TimeSinceCreation = Math.Round(DateTime.Now.Subtract(post.CreateDate).TotalHours),
+                Title = post.Title,
+                Body = post.Body,
+                PostId = post.Id,
+            };
+
+            return View(model);
         }
 
         // GET: Posts/Create

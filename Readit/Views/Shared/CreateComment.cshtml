@@ -1,0 +1,7 @@
+﻿@model int
+@using (Html.BeginForm("AddComment", "Posts"))
+{
+    @Html.Hidden("PostId", Model)
+    @Html.TextBox("Comment")
+    <input type="submit" value="Add Comment" />
+}

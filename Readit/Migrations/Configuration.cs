@@ -30,6 +30,8 @@ namespace Readit.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+           //TODO: Seed Function!!
             //var posts = new Builder<Post>().
 
         }
