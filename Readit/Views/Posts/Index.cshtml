@@ -9,7 +9,7 @@
 
 <br />
 @{ var rank = 1;}
-@Regex imgRegex = new Regex("(jpg|png|gif|bmp)$");
+
 @foreach (var x in Model)
 {
     <div class="readitPost row">
@@ -23,6 +23,7 @@
         </div>
         @if (x.ExternalLink != null)
         {
+            Regex imgRegex = new Regex("(jpg|png|gif|bmp)$");
             if (imgRegex.IsMatch(x.ExternalLink))
             {
                 <img class="img-responsive img-thumbnail col-xs-1" src=@x.ExternalLink/>
