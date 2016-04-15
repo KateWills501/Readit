@@ -41,8 +41,8 @@
         </td>
     </tr>
 }
-
     
 </table>
 
-@Html.Partial("CreateComment", (int)ViewBag.PostId)
+@*@ViewBag.PostId = ViewBag.PostId;  // why is this null here?!?!?!
+@Html.Partial("CreateComment", (int)ViewBag.PostId)*@
