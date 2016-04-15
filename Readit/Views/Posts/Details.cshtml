@@ -18,9 +18,7 @@
             @Html.DisplayFor(model => model.Body)
         }
         @{
-            Regex imgRegex = new Regex("(jpg|png|gif|bmp)$");
-
-            if (Model.ExternalLink != null && imgRegex.IsMatch(Model.ExternalLink))
+            if (Model.IsImage)
             {
                 <img class="col-md-offset-1 col-md-8 img-responsive img-thumbnail" src=@Model.ExternalLink/>
                 <br/>
@@ -31,9 +29,15 @@
         }
     </div>
 </div>
-@{
+@if (Model.NumOfComments > 0)
+{
     ViewBag.PostId = Model.PostId;
-    Html.RenderAction("CommentList", new { postId = Model.PostId});
+    Html.RenderAction("CommentList", new {postId = Model.PostId});
+}
+else
+{
+    ViewBag.PostId = Model.PostId;
+    @Html.Partial("CreateComment", (int)ViewBag.PostId)
 }
 
 <p>

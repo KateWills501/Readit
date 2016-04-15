@@ -2,6 +2,7 @@
 @using (Html.BeginForm("AddComment", "Posts"))
 {
     @Html.Hidden("PostId", Model)
-    @Html.TextBox("Comment")
-    <input type="submit" value="Add Comment" />
+    <span>Comment: </span> @Html.TextBox("Body")
+    <span>Your Name: </span> @Html.TextBox("Author")
+    <input type="submit" value="Add Comment" class="btn btn-default"/>
 }

@@ -35,6 +35,7 @@ namespace Readit.Models
         public string ExternalLink { get; set; }
         public double TimeSinceCreation { get; set; }
         public string Author { get; set; }
+        public int NumOfComments { get; set; }
         public bool IsImage
         {
             get

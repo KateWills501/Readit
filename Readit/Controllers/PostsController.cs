@@ -56,10 +56,18 @@ namespace Readit.Controllers
             return PartialView(commentVMs);
         }
 
-        public ActionResult AddComment()
+        [HttpPost]
+        public ActionResult AddComment(Comment newComment, int postId)
         {
+            newComment.CreateDate = DateTime.Now;
+            newComment.Post = db.Posts.Find(postId);
+            if (newComment.Post == null)
+            {
+                return RedirectToAction("Index");
+            }
 
-            //TODO: Add comment to DB
+            db.Comments.Add(newComment);
+            db.SaveChanges();
             return RedirectToAction("Index"); //TODO: Direct to Details/ID
         }
 
@@ -87,6 +95,7 @@ namespace Readit.Controllers
                 Title = post.Title,
                 Body = post.Body,
                 PostId = post.Id,
+                NumOfComments = post.Comments.Count
             };
 
             return View(model);
