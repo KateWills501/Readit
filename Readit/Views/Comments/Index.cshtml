@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Readit.Models.CommentVM>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -23,7 +23,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Body)
         </td>
-
     </tr>
 }
 

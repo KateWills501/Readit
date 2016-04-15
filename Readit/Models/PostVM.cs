@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.Text.RegularExpressions;
 
 namespace Readit.Models
 {
@@ -20,5 +16,22 @@ namespace Readit.Models
         public int Score { get; set; }
 
         public int NumOfComments { get; set; }
+
+        public bool IsImage
+        {
+            get
+            {
+                if (ExternalLink == null) return false;
+
+                var imgRegex = new Regex("(jpg|png|gif|bmp)$");
+                if (imgRegex.IsMatch(ExternalLink))
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public int Rank { get; set; }
     }
 }

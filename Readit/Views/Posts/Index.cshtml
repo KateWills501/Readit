@@ -1,33 +1,26 @@
-﻿@using System.Diagnostics.Eventing.Reader
-@using System.Text.RegularExpressions
-@model IEnumerable<Readit.Models.PostVM>
+﻿@model IEnumerable<Readit.Models.PostVM>
 
 @{
     ViewBag.Title = "Readit";
 }
 
 
-<br />
-@{ var rank = 1;}
+<br/>
 
 @foreach (var x in Model)
 {
     <div class="readitPost row">
         <div class="col-md-1 row">
-            <div class="rank col-md-3">@rank</div>
+            <div class="rank col-md-3">@x.Rank</div>
 
             <div class="col-md-2 up glyphicon glyphicon-chevron-up" data-id="@x.PostId"></div>
             <span class="col-md-6 score">@x.Score</span>
             <div class="col-md-2 col-md-offset-4 down glyphicon glyphicon-chevron-down" data-id="@x.PostId"></div>
 
         </div>
-        @if (x.ExternalLink != null)
+        @if (x.IsImage)
         {
-            Regex imgRegex = new Regex("(jpg|png|gif|bmp)$");
-            if (imgRegex.IsMatch(x.ExternalLink))
-            {
-                <img class="img-responsive img-thumbnail col-xs-1" src=@x.ExternalLink/>
-            }
+            <img class="img-responsive img-thumbnail col-xs-1" src=@x.ExternalLink/>
         }
 
         <div class="col-md-9">
@@ -36,13 +29,10 @@
             }
             <a href=@postDetails class="title">@x.Title</a>
             <div class="create">Created: @x.TimeSinceCreation hours ago by @x.Author</div>
-            <div>@Html.ActionLink($"{x.NumOfComments} Comments", "Details", new { id = x.PostId }) </div>
+            <div>@Html.ActionLink($"{x.NumOfComments} Comments", "Details", new {id = x.PostId}) </div>
         </div>
 
     </div>
-
-    rank++;
-
 }
 
 @section scripts
@@ -59,7 +49,7 @@
                     url: "/Posts/Vote?postid=" + postId + "&up=" + isUp
 
                 }).done(function(data) { $(thisdiv).siblings(".score").text(data) });
-        });
+            });
         })
 
     </script>

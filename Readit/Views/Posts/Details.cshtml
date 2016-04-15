@@ -36,6 +36,11 @@
 
 @Html.RenderPartial("~/Views/Comments/Index.cshtml", Model.Id);
 
+@{ Html.RenderPartial(
+       "~/Views/Comments/Index.cshtml",
+       new {postID = Model.Id}) };
+}
+@Html.RenderAction("")
 
 <p>
     @Html.ActionLink("Back Home", "Index", null, new { @class = "btn btn-primary btn-sm" })

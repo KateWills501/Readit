@@ -1,3 +1,6 @@
+using FizzWare.NBuilder;
+using Readit.Models;
+
 namespace Readit.Migrations
 {
     using System;
@@ -13,7 +16,7 @@ namespace Readit.Migrations
             ContextKey = "ReaditDbContext";
         }
 
-        protected override void Seed(ReaditDbContext context)
+        protected override void Seed(ReaditDbContext db)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -27,6 +30,8 @@ namespace Readit.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            //var posts = new Builder<Post>().
+
         }
     }
 }
