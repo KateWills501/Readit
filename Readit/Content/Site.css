@@ -49,3 +49,13 @@ textarea {
     text-shadow: 1px 1px darkgray;
     font-size: 4rem;
 }
+
+#or {
+    font-size: 3rem;
+    color: blue;
+}
+
+.detailcontent {
+    font-size: 2rem;
+    font-weight: bold;
+}

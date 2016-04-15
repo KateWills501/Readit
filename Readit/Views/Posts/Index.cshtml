@@ -1,4 +1,5 @@
 ﻿@using System.Diagnostics.Eventing.Reader
+@using System.Text.RegularExpressions
 @model IEnumerable<Readit.Models.PostVM>
 
 @{
@@ -8,6 +9,7 @@
 
 <br />
 @{ var rank = 1;}
+@Regex imgRegex = new Regex("(jpg|png|gif|bmp)$");
 @foreach (var x in Model)
 {
     <div class="readitPost row">
@@ -21,7 +23,10 @@
         </div>
         @if (x.ExternalLink != null)
         {
-            <img class="img-responsive img-thumbnail col-xs-1" src=@x.ExternalLink />
+            if (imgRegex.IsMatch(x.ExternalLink))
+            {
+                <img class="img-responsive img-thumbnail col-xs-1" src=@x.ExternalLink/>
+            }
         }
 
         <div class="col-md-9">

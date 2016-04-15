@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,10 @@ namespace Readit.Models
         public string Title { get; set; }
 
         [MaxLength(10000)]
+        [DataType(DataType.MultilineText)]
         public string Body { get; set; }
 
-        //[RegularExpression()] // to validate website
+        [DisplayName("Image Link")]
         public string ExternalLink { get; set; }
 
         [Required]
