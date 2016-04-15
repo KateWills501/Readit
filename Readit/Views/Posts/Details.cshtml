@@ -20,7 +20,7 @@
         @{
             Regex imgRegex = new Regex("(jpg|png|gif|bmp)$");
 
-            if (imgRegex.IsMatch(Model.ExternalLink))
+            if (Model.ExternalLink != null && imgRegex.IsMatch(Model.ExternalLink))
             {
                 <img class="col-md-offset-1 col-md-8 img-responsive img-thumbnail" src=@Model.ExternalLink/>
                 <br/>

@@ -18,4 +18,6 @@ public class ReaditDbContext : DbContext
     }
 
     public System.Data.Entity.DbSet<Readit.Models.Post> Posts { get; set; }
+
+    public System.Data.Entity.DbSet<Readit.Models.Comment> Comments { get; set; }
 }
