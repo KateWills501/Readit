@@ -15,9 +15,25 @@ namespace Readit.Controllers
         private ReaditDbContext db = new ReaditDbContext();
 
         // GET: Comments
-        public ActionResult Index()
+        public ActionResult Index(int postId)
         {
-            return View(db.Comments.ToList());
+            Post post = db.Posts.Find(postId);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+
+            var comments = db.Posts.Find(postId).Comments.OrderByDescending(x => x.UpCount - x.DownCount).ToList();
+            var commentVMs = comments.Select(p => new CommentVM()
+            {
+                Author = p.Author,
+                TimeSinceCreation = Math.Round(DateTime.Now.Subtract(p.CreateDate).TotalHours),
+                Score = p.UpCount - p.DownCount,
+                CommentId = p.Id,
+                Body=p.Body
+            }).ToList();
+            return PartialView(commentVMs);
+
         }
 
         // GET: Comments/Details/5

@@ -34,6 +34,8 @@
 
 @*Comments*@
 
+@Html.RenderPartial("~/Views/Comments/Index.cshtml", Model.Id);
+
 
 <p>
     @Html.ActionLink("Back Home", "Index", null, new { @class = "btn btn-primary btn-sm" })
