@@ -53,6 +53,7 @@ namespace Readit.Controllers
                 Body = p.Body
             }).ToList();
 
+            ViewBag.PostId = postId;
             return PartialView(commentVMs);
         }
 
