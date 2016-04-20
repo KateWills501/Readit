@@ -55,3 +55,13 @@ textarea {
     font-size: 2rem;
     font-weight: bold;
 }
+
+.commentbody {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.commentauthor {
+    color: darkblue;
+    font-weight: bold;
+}

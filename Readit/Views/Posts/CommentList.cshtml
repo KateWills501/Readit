@@ -1,48 +1,21 @@
 ﻿@model IEnumerable<Readit.Models.CommentVM>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeSinceCreation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Score)
-        </th>
-    </tr>
+<br />
+<br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeSinceCreation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score)
-        </td>
-    </tr>
+
+@foreach (var item in Model)
+{
+
+    <div class="col-md-offset-1">Comment by <span class="commentauthor">@item.Author</span> written @item.TimeSinceCreation hours ago:</div>
+    <div class="commentbody col-md-offset-2">
+        @Html.DisplayFor(modelItem => item.Body)
+    </div>
 }
-    
-</table>
 
+
+<br />
 
 @Html.Partial("CreateComment", (int)ViewBag.PostId)
+
+<br />

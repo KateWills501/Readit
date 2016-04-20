@@ -64,12 +64,17 @@ namespace Readit.Controllers
             newComment.Post = db.Posts.Find(postId);
             if (newComment.Post == null)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Posts", new { Id = postId });
+            }
+
+            if (newComment.Author == null || newComment.Body == null)
+            {
+                return RedirectToAction("Details", "Posts", new {Id = postId});
             }
 
             db.Comments.Add(newComment);
             db.SaveChanges();
-            return RedirectToAction("Index"); //TODO: Direct to Details/ID
+            return RedirectToAction("Details", "Posts", new { Id = postId });
         }
 
 
